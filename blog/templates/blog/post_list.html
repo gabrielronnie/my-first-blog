@@ -27,13 +27,17 @@
     </div>
 
     <div>
-      <h2><a href=''>Blog post</a></h2>
+      {% for post in posts %}
+      <p>published: {{post.published_date}}</p>
+      <h1><a href="">{{post.title}}</a></h1>
+      <p>{{post.text|linebreaksbr}}</p>
+      {% endfor %}
     </div>
   </main>
 
   <footer>
     <div>
-      <p>Published: 2018. sept. 4., Tue, 15:42:01 CEST</p>
+      <p>Established: 2018. sept. 4., Tue, 15:42:01 CEST</p>
     </div>
     <div>
       <a href="https://github.com/gabrielronnie/my-first-blog">This is the source of the current site</a>
