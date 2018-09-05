@@ -1,49 +1,26 @@
-<html>
+{% extends 'blog/base.html' %}
 
-<head>
-  <title>Django Boys Rule</title>
-</head>
-
-<body>
+{% block content %}
+  <div class="intro">
+    <h3>A short introduction</h3>
+    <p>Hello, my name is Gabriel Ronnie. I am a beginner web developer.</p>
+    <p>This is my blog, welcome!</p>
+  </div>
   
-  <header>
-    <h1>This is my first online site ever</h1>
-  </header>
-
-  <main>
-    <div>
-      <h3>A short introduction</h3>
-      <p>Hello, my name is Gabriel Ronnie. I am a beginner web developer.</p>
+  <div class="container">
+    <div class="row">
+      <div class="col md-8">
+        {% for post in posts %}
+        <div class="post">
+          <div class="date">
+            <p>published: {{post.published_date}}</p>
+          </div>
+          <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
+          <p>{{post.text|linebreaksbr}}</p>
+          <hr> 
+        </div> 
+        {% endfor %}
+      </div>
     </div>
-
-    <div>
-      <h3>My end goal is to become a proffessional web developer</h3>
-        <p>To achieve this I am currently working on the following skills:<p>
-        <ol>
-          <li>Django</li>
-          <li>Html</li>
-          <li>CSS</li>
-        </ol>
-    </div>
-
-    <div>
-      {% for post in posts %}
-      <p>published: {{post.published_date}}</p>
-      <h1><a href="">{{post.title}}</a></h1>
-      <p>{{post.text|linebreaksbr}}</p>
-      {% endfor %}
-    </div>
-  </main>
-
-  <footer>
-    <div>
-      <p>Established: 2018. sept. 4., Tue, 15:42:01 CEST</p>
-    </div>
-    <div>
-      <a href="https://github.com/gabrielronnie/my-first-blog">This is the source of the current site</a>
-    </div>
-  </footer>
-
-</body>
-
-</html>
+  </div>
+{% endblock %}
